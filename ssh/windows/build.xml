@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <Target Name="Build">
+    <ItemGroup>
+      <Configurations Include="Release"/>
+      <Platforms Include="x86;x64"/>
+      <ConfigAndPlatform Include="@(Configurations)">
+        <Platform>%(Platforms.Identity)</Platform>
+      </ConfigAndPlatform>
+    </ItemGroup>
+    <MSBuild BuildInParallel="true" Projects="ssh.sln" Targets="Build"
+             Properties="Configuration=%(ConfigAndPlatform.Identity);Platform=%(ConfigAndPlatform.Platform)"/>
+  </Target>
+  <ItemGroup>
+    <ArtifactFiles Include="src\artifacts\**\*.*"/>
+  </ItemGroup>
+  <Target Name="CopyArtifactFiles" AfterTargets="Build">
+    <Copy SourceFiles="@(ArtifactFiles)" DestinationFolder="obj\package\%(RecursiveDir)" SkipUnchangedFiles="true" OverwriteReadOnlyFiles="true"/>
+  </Target>
+  <Target Name="ZipOutputPath" AfterTargets="CopyArtifactFiles">
+    <ZipDirectory SourceDirectory="obj\package" Overwrite="true"
+                  DestinationFile="bin\package.zip" />
+  </Target>
+</Project>

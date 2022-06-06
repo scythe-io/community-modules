@@ -1,0 +1,8 @@
+{
+    "name": "scythe.ssh",
+    "id": "6d139160-b684-11ec-9b21-8b2a13dd1ff5",
+    "display_name": "ssh",
+    "description": "Run ssh commands, and test files on ssh. ",
+    "icon_filename": "icons8-ssh-77.png",
+    "type_flags": "CATEGORY_WORKER"
+}

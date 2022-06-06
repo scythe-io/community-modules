@@ -1,0 +1,26 @@
+ CC=gcc
+ RM= rm -f
+ CFLAGS= -m64 -D_REENTRANT -Wall -I. -I./include -I/usr/local/include -I/usr/include -g -O2 -fPIC -lssh
+ LDFLAGS= -shared -m64
+ SRCS = src/ssh.c
+ OUT = bin/linux/x64
+ OUTPUT_LIB = $(OUT)/ssh.so
+ OBJDIR = obj/x64
+ OBJS = $(SRCS:.c=.o)
+
+.PHONY: all
+all: ${OUTPUT_LIB}
+     $(shell mkdir -p $(OUT); mkdir -p $(OBJDIR))
+
+$(OUTPUT_LIB): $(OBJS)
+	$(CC) -o $@ $^ ${LDFLAGS}
+
+$(SRCS:.c=.d):%.d:%.c
+	$(CC) $(CFLAGS) -MM $< >$@
+
+include $(SRCS:.c=.d)
+
+.PHONY: clean
+clean:
+	-${RM} ${OUTPUT_LIB} ${OBJS} $(OBJDIR)/* $(SRCS:.c=.d)
+

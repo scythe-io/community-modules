@@ -1,0 +1,8 @@
+LIBRARY
+
+EXPORTS
+
+init
+run
+getinfo
+deinit

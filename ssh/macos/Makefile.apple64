@@ -1,0 +1,2 @@
+run.bundle:
+	$(CC) src/ssh.c src/nxjson.c -framework CoreFoundation -lssh -o bundle -bundle -o bin/macos/x64/ssh.bundle
