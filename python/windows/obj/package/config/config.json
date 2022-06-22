@@ -1,0 +1,9 @@
+{
+    "name": "scythe.python",
+    "id": "bf5e4010-f260-11ec-9bb2-290282c90ef4",
+    "runtime_id": "DD833957-4D55-4A50-9EF3-9752EE95708F",
+    "display_name": "python",
+    "description": "Execute python scripts or programs from with a scythe client",
+    "icon_filename": "default_module_icon.png",
+    "type_flags": "CATEGORY_WORKER"
+}
