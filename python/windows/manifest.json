@@ -1,0 +1,1 @@
+{"operating_system":"windows","runtime":"python3","cpu_architecture":["x86","x64"],"module_type":"capability","company_name":"scythe","module_name":"python","uuid":"bf5e4010-f260-11ec-9bb2-290282c90ef4","module_display_name":"python","module_description":"Execute python scripts or programs from with a scythe client","module_icon_filename":"default_module_icon.png"}
